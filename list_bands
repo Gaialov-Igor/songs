@@ -1,0 +1,16 @@
+import csv
+
+def list_bands(letters):
+    with open('songdata.csv',) as file:
+        reader=csv.DictReader(file)
+        artists=[]
+        letters=letters.lower()
+        for row in reader:
+            art=row['artist']
+            art=art.lower()
+            if (art.find(letters) != -1) and (row['artist'] not in artists):
+                artists.append(row['artist'])
+        for i in range(len(artists)):
+            print(artists[i], end='\n')
+
+list_bands('ab')
